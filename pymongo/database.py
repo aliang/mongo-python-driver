@@ -359,6 +359,9 @@ class Database(common.BaseObject):
     def collection_names(self):
         """Get a list of all the collection names in this database.
         """
+        with open("/mnt/pymongo-collection-names.log", "a") as f:
+            import traceback
+            traceback.print_stack()
         results = self["system.namespaces"].find(_must_use_master=True)
         names = [r["name"] for r in results]
         names = [n[len(self.__name) + 1:] for n in names
