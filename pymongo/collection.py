@@ -877,9 +877,10 @@ class Collection(common.BaseObject):
         information on the possible options. Returns an empty
         dictionary if the collection has not been created yet.
         """
-        with open("/mnt/pymongo-options.log", "a") as f:
-            import traceback
-            traceback.print_stack()
+        print "------- options -------"
+        import traceback
+        traceback.print_stack()
+        print "------- end options -------"
         
         result = self.__database.system.namespaces.find_one(
             {"name": self.__full_name})
